@@ -1,0 +1,6 @@
+{% extends "users/base.html"%}
+{%block body%}
+    <h1>Well hello {{request.user.first_name}}</h1>
+    <h2>Your email is {{request.user.email}}</h2>
+    <h2></h2>
+{%endblock%}

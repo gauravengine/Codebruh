@@ -1,0 +1,12 @@
+{%extends "baseapp/base.html"%}
+
+{%block body%}
+    <h2>Questions :</h2>
+    <ul>
+        {%for question in questions %}
+            <li>
+                <a href="{%url 'show_problem' question.id %} ">{{question}}</a>
+            </li>
+        {%endfor%}
+    </ul>
+{%endblock%}

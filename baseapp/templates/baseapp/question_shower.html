@@ -1,0 +1,26 @@
+{%extends "baseapp/base.html" %}
+{%block body%}
+    <h1>{{curr_question}}</h1>
+    <br>
+    <div>
+        <a href="{{curr_question.question_url}}">Go to problem page</a>
+    </div>
+    <div>
+        This question is solved currently by:
+        <ul>
+            {%for stu in curr_question_solvers%}
+                <li>{{stu}}</li>
+            {%endfor%}
+        </ul>
+    </div>
+    <h2>Have You solved this ? </h2>
+    <form action="{%url 'add_name' curr_question.id %}" method="POST">
+        {% csrf_token %}
+        <select name="stu_id" >
+            {%for stu in non_solvers %}
+                <option value="{{stu.id}}">{{stu}}</option>
+            {%endfor%}
+        </select>
+        <input type="submit">
+    </form>
+{%endblock%}
